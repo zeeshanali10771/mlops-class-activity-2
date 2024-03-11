@@ -1,5 +1,9 @@
 pipeline {
     agent any
+
+    enviorment{
+        env_variable = 'value'
+    }
     stages {
         stage('Clone Repository') {
             steps {
@@ -12,7 +16,7 @@ pipeline {
             steps {
                 // Install dependencies from requirements.txt
                 script {
-                    sh 'pip3 install -r requirements.txt'
+                    bat 'pip3 install -r requirements.txt'
                 }
             }
         }
@@ -21,7 +25,7 @@ pipeline {
             steps {
                 // Run test.py using pytest
                 script {
-                    sh 'pytest test.py'
+                    bat 'pytest test.py'
                 }
             }
         }
